@@ -1,0 +1,14 @@
+{
+  "name": "@vue-maptalks/components",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "peerDependencies": {
+    "maptalks-gl": "catalog:",
+    "vue": "catalog:"
+  },
+  "types": "index.d.ts",
+  "sideEffects": false
+}

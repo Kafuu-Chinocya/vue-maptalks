@@ -1,0 +1,41 @@
+{
+  "name": "@vue-maptalks/build",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "scripts": {
+    "start": "gulp --require node_modules/@esbuild-kit/cjs-loader -f gulpfile.ts"
+  },
+  "peerDependencies": {
+    "maptalks-gl": "catalog:",
+    "vue": "catalog:"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "chalk": "^5.4.1",
+    "consola": "^3.4.2",
+    "esbuild": "^0.25.1",
+    "gulp": "^5.0.0",
+    "rollup": "^4.36.0",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "unplugin-vue": "^6.0.1",
+    "vue-macros": "3.0.0-beta.6"
+  },
+  "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.4",
+    "@pnpm/types": "^1000.2.1",
+    "@types/gulp": "^4.0.17",
+    "maptalks-gl": "catalog:",
+    "vue": "catalog:"
+  },
+  "types": "index.d.ts",
+  "sideEffects": false
+}

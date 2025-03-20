@@ -1,0 +1,66 @@
+{
+  "private": true,
+  "packageManager": "pnpm@10.5.1",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "play",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "pnpm -C play dev",
+    "build": "pnpm run -C internal/build start",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
+    "clean:dist": "rimraf dist",
+    "format": "prettier --write --cache .",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json --max-warnings 0 --cache",
+    "lint:fix": "pnpm run lint --fix",
+    "typecheck": "run-p typecheck:web typecheck:play typecheck:node typecheck:vite-config",
+    "typecheck:web": "vue-tsc -p tsconfig.web.json --composite false --noEmit",
+    "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
+    "typecheck:play": "vue-tsc -p tsconfig.play.json --composite false --noEmit",
+    "typecheck:vite-config": "vue-tsc -p tsconfig.vite-config.json --composite false --noEmit",
+    "cz": "cross-env NODE_OPTIONS='--experimental-transform-types' cz",
+    "prepare": "husky"
+  },
+  "peerDependencies": {
+    "maptalks-gl": "catalog:",
+    "vue": "catalog:"
+  },
+  "dependencies": {
+    "@vue-maptalks/components": "workspace:*",
+    "@vue-maptalks/hooks": "workspace:*",
+    "@vue-maptalks/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.13.10",
+    "@vue-maptalks/commitlint-config": "workspace:*",
+    "@vue-maptalks/eslint-config": "workspace:*",
+    "@vue/tsconfig": "^0.7.0",
+    "commitizen": "^4.3.1",
+    "cross-env": "^7.0.3",
+    "cz-git": "^1.11.1",
+    "eslint": "catalog:",
+    "fast-glob": "^3.3.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "catalog:",
+    "rimraf": "^6.0.1",
+    "sass": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,json}": "eslint --fix"
+  }
+}

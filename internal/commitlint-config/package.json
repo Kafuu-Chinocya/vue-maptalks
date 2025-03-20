@@ -1,0 +1,7 @@
+{
+  "name": "@vue-maptalks/commitlint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.ts",
+  "dependencies": {}
+}

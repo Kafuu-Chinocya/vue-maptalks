@@ -1,0 +1,29 @@
+{
+  "name": "vue-maptalks",
+  "version": "0.0.0",
+  "description": "Vue for maptalks.",
+  "keywords": [
+    "vue",
+    "gis",
+    "vue components",
+    "maptalks",
+    "maptalks-gl"
+  ],
+  "homepage": "https://github.com/Kafuu-Chinocya/vue-maptalks",
+  "bugs": {
+    "url": "https://github.com/Kafuu-Chinocya/vue-maptalks/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kafuu-Chinocya/vue-maptalks.git"
+  },
+  "peerDependencies": {
+    "maptalks-gl": "catalog:",
+    "vue": "catalog:"
+  },
+  "sideEffects": false
+}

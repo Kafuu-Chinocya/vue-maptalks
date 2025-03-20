@@ -1,0 +1,15 @@
+node_modules
+.pnp
+.pnp.js
+coverage
+.nuxt/
+.output/
+out/
+dist
+.idea
+.DS_Store
+.eslintcache
+*.pem
+*.log
+*.local
+certs/
