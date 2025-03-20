@@ -15,6 +15,7 @@ export const PACKAGE_OUTPUT_DIR = resolve(DIST_DIR, PACKAGE_NAME)
 export const PACKAGE_ROOT = resolve(ROOT_DIR, 'packages')
 export const HOOK_ROOT = resolve(PACKAGE_ROOT, 'hooks')
 export const UTILS_ROOT = resolve(PACKAGE_ROOT, 'utils')
+export const COMPONENT_ROOT = resolve(PACKAGE_ROOT, 'components')
 export const ENTRY_PACKAGE_ROOT = resolve(PACKAGE_ROOT, PACKAGE_NAME)
 export const BUILD_ROOT = resolve(ROOT_DIR, 'internal', 'build')
 

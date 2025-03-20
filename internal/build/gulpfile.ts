@@ -50,6 +50,7 @@ export default series(
   withTaskName('createOutput', () =>
     mkdir(ENTRY_PACKAGE_ROOT, { recursive: true })
   ),
+  withTaskName('buildComponent', runTask('buildComponent')),
 
   parallel(
     // runTask('buildModules'),

@@ -1,8 +1,8 @@
 {
   "name": "@vue-maptalks/components",
   "version": "0.0.0",
-  "main": "index.ts",
-  "module": "index.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "unpkg": "index.js",
   "jsdelivr": "index.js",
   "peerDependencies": {
