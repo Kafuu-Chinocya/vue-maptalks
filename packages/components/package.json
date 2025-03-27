@@ -1,10 +1,11 @@
 {
   "name": "@vue-maptalks/components",
   "version": "0.0.0",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "scripts": {
+    "clean": "rimraf dist"
+  },
   "peerDependencies": {
     "maptalks-gl": "catalog:",
     "vue": "catalog:"

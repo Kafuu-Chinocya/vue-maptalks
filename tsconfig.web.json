@@ -8,7 +8,7 @@
     "isolatedModules": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["packages", "typings/env.d.ts"],
+  "include": ["packages/*", "typings/env.d.ts"],
   "exclude": [
     "node_modules",
     "**/dist",

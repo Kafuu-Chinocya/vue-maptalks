@@ -4,7 +4,13 @@ import chalk from 'chalk'
 import { consola } from 'consola'
 import { type ProjectManifest } from '@pnpm/types'
 
-import { BUILD_ROOT, ENTRY_PACKAGE_ROOT, ROOT_DIR } from '../constants'
+import {
+  BUILD_ROOT,
+  ENTRY_PACKAGE_ROOT,
+  PACKAGE_PREFIX,
+  ROOT_DIR
+} from '../constants'
+import { type Module, buildConfig } from '../build-info'
 
 import type { OutputOptions, RollupBuild } from 'rollup'
 import type { TaskFunction } from 'gulp'
@@ -33,8 +39,19 @@ export function formatBundleFilename(
   return `${name}${minify ? '.min' : ''}.${ext}`
 }
 
+// pkg
 export const getPackageManifest = (pkgPath: string) => {
   return require(pkgPath) as ProjectManifest
+}
+
+export const pathRewriter = (module: Module) => {
+  const config = buildConfig[module]
+
+  return (id: string) => {
+    id = id.replaceAll(`${PACKAGE_PREFIX}/`, `${config.bundle.path}/`)
+
+    return id
+  }
 }
 
 export const getPackageDependencies = (
@@ -47,6 +64,15 @@ export const getPackageDependencies = (
     dependencies: Object.keys(dependencies),
     peerDependencies: Object.keys(peerDependencies)
   }
+}
+
+export const excludeFiles = (files: string[]) => {
+  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist']
+
+  return files.filter((path) => {
+    const position = path.startsWith(ROOT_DIR) ? ROOT_DIR.length : 0
+    return !excludes.some((exclude) => path.includes(exclude, position))
+  })
 }
 
 export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {

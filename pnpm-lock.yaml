@@ -156,9 +156,6 @@ importers:
       rollup-plugin-esbuild:
         specifier: ^6.2.1
         version: 6.2.1(esbuild@0.25.1)(rollup@4.36.0)
-      unplugin-vue:
-        specifier: ^6.0.1
-        version: 6.0.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)(vue@3.5.13(typescript@5.8.2))(yaml@2.7.0)
       vue-macros:
         specifier: 3.0.0-beta.6
         version: 3.0.0-beta.6(esbuild@0.25.1)(rollup@4.36.0)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
@@ -3924,12 +3921,6 @@ packages:
   unplugin-vue-define-options@3.0.0-beta.6:
     resolution: {integrity: sha512-UkEhI7Rc5auAiE7dgk5MPPEebqrQolBCEk6ykf3VmTWdbh2/rX7S8g4+h+0sdCOXFTDZgD8m2ixav3GUjZG8ew==}
     engines: {node: '>=20.18.0'}
-
-  unplugin-vue@6.0.1:
-    resolution: {integrity: sha512-bQhp187nwajtvJJq0H4Sg2Ns9WYFoLOGt/d/zfHaDAZH6Ct/G1cVBgBnvrFgQj2Z82TN0NuVO+nn2pFoNgu+kg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      vue: ^3.2.25
 
   unplugin@2.2.1:
     resolution: {integrity: sha512-Q0YDhwViJaSnHf1cxLf+/VKhmfdr/ZAS/RL2GQVO0cAbAfJAVUef2bvNu+veyWcEPNwsTlFmMiFLjf8Xeqog8g==}
@@ -8096,27 +8087,6 @@ snapshots:
       unplugin: 2.2.1
     transitivePeerDependencies:
       - vue
-
-  unplugin-vue@6.0.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)(vue@3.5.13(typescript@5.8.2))(yaml@2.7.0):
-    dependencies:
-      '@vue/reactivity': 3.5.13
-      debug: 4.4.0
-      unplugin: 2.2.1
-      vite: 6.2.2(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)(yaml@2.7.0)
-      vue: 3.5.13(typescript@5.8.2)
-    transitivePeerDependencies:
-      - '@types/node'
-      - jiti
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - tsx
-      - yaml
 
   unplugin@2.2.1:
     dependencies:

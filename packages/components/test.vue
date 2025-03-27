@@ -3,6 +3,8 @@
 </template>
 
 <script lang="ts" setup>
+import { watch } from 'vue'
+
 const props = defineProps({
   a: {
     type: Number

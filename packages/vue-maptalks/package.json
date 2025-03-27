@@ -25,5 +25,9 @@
     "maptalks-gl": "catalog:",
     "vue": "catalog:"
   },
-  "sideEffects": false
+  "sideEffects": [
+    "dist/*",
+    "es/components/*/style/*",
+    "lib/components/*/style/*"
+  ]
 }

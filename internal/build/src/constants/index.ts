@@ -18,5 +18,4 @@ export const UTILS_ROOT = resolve(PACKAGE_ROOT, 'utils')
 export const COMPONENT_ROOT = resolve(PACKAGE_ROOT, 'components')
 export const ENTRY_PACKAGE_ROOT = resolve(PACKAGE_ROOT, PACKAGE_NAME)
 export const BUILD_ROOT = resolve(ROOT_DIR, 'internal', 'build')
-
-export const VUE_MAPTALKS_PACKAGE = resolve(ENTRY_PACKAGE_ROOT, 'package.json')
+export const ENTRY_PACKAGE = resolve(ENTRY_PACKAGE_ROOT, 'package.json')

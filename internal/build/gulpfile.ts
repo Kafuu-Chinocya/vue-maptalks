@@ -5,10 +5,10 @@ import { type TaskFunction, parallel, series } from 'gulp'
 
 import {
   DIST_DIR,
+  ENTRY_PACKAGE,
   ENTRY_PACKAGE_ROOT,
   type Module,
   ROOT_DIR,
-  VUE_MAPTALKS_PACKAGE,
   buildConfig,
   run,
   runTask,
@@ -17,10 +17,7 @@ import {
 
 export const copyFiles = () =>
   Promise.all([
-    copyFile(
-      VUE_MAPTALKS_PACKAGE,
-      path.join(ENTRY_PACKAGE_ROOT, 'package.json')
-    ),
+    copyFile(ENTRY_PACKAGE, path.join(ENTRY_PACKAGE_ROOT, 'package.json')),
     copyFile(
       path.resolve(ROOT_DIR, 'README.md'),
       path.resolve(ENTRY_PACKAGE_ROOT, 'README.md')
@@ -50,16 +47,15 @@ export default series(
   withTaskName('createOutput', () =>
     mkdir(ENTRY_PACKAGE_ROOT, { recursive: true })
   ),
-  withTaskName('buildComponent', runTask('buildComponent')),
+  withTaskName('buildComponents', runTask('buildComponents')),
 
   parallel(
-    // runTask('buildModules'),
-    runTask('buildFullBundle')
-    // runTask('generateTypesDefinitions'),
-    // runTask('buildHelper')
+    runTask('buildModules'),
+    runTask('buildFullBundle'),
+    runTask('generateTypesDefinitions')
   ),
 
   parallel(copyTypesDefinitions, copyFiles)
-)
+) as TaskFunction
 
 export * from './src'

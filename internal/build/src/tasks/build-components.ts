@@ -13,11 +13,11 @@ import { TaskFunction, parallel } from 'gulp'
 import { version } from '../../../../packages/vue-maptalks/version'
 import { target } from '../build-info'
 import { COMPONENT_ROOT, PACKAGE_NAME } from '../constants'
-import { withTaskName, writeBundles } from '../utils'
+import { formatBundleFilename, withTaskName, writeBundles } from '../utils'
 
 const banner = `/*! ${PACKAGE_NAME} v${version} */\n`
 
-async function buildFullEntry() {
+async function buildFullEntry(minify: boolean) {
   const plugins = [
     VueMacros({
       setupComponent: false,
@@ -47,35 +47,47 @@ async function buildFullEntry() {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    minifyPlugin({
-      target,
-      sourceMap: true
-    })
+    minify &&
+      minifyPlugin({
+        target,
+        sourceMap: true
+      })
   ]
 
   await using bundle = await rollup({
     input: resolve(COMPONENT_ROOT, 'index.ts'),
-    plugins
+    plugins,
+    treeshake: true
   })
 
   await writeBundles(bundle, [
     {
       format: 'esm',
-      file: resolve(COMPONENT_ROOT, 'dist', 'index.esm.js'),
-      sourcemap: true,
+      file: resolve(
+        COMPONENT_ROOT,
+        'dist',
+        formatBundleFilename('index', minify, 'mjs')
+      ),
+      sourcemap: minify,
       banner
     },
     {
       format: 'cjs',
-      file: resolve(COMPONENT_ROOT, 'dist', 'index.cjs.js'),
-      sourcemap: true,
+      file: resolve(
+        COMPONENT_ROOT,
+        'dist',
+        formatBundleFilename('index', minify, 'js')
+      ),
+      sourcemap: minify,
       banner
     }
   ])
 }
 
-export const buildComponents = () => async () => Promise.all([buildFullEntry()])
+export const buildFullComponents = (minify: boolean) => async () =>
+  Promise.all([buildFullEntry(minify)])
 
-export const buildComponent: TaskFunction = parallel(
-  withTaskName('buildComponent', buildComponents())
+export const buildComponents: TaskFunction = parallel(
+  withTaskName('buildComponentsMinified', buildFullComponents(true)),
+  withTaskName('buildComponents', buildFullComponents(false))
 )
