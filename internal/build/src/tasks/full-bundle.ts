@@ -32,7 +32,15 @@ async function buildFullEntry(minify: boolean) {
       setupComponent: false,
       setupSFC: false,
       plugins: {
-        vue: Vue(),
+        vue: Vue({
+          isProduction: true,
+          template: {
+            compilerOptions: {
+              hoistStatic: false,
+              cacheHandlers: false
+            }
+          }
+        }),
         vueJsx: VueJsx()
       }
     }),

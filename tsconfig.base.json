@@ -14,8 +14,11 @@
     "esModuleInterop": true,
     "removeComments": false,
     "rootDir": ".",
+    "types": [],
     "paths": {
-      "@vue-maptalks/*": ["packages/*"],
+      "@vue-maptalks/components": ["packages/components"],
+      "@vue-maptalks/utils": ["packages/utils"],
+      "@vue-maptalks/hooks": ["packages/hooks"],
       "vue-maptalks": ["packages/vue-maptalks"]
     }
   }

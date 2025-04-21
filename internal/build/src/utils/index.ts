@@ -15,6 +15,7 @@ import { type Module, buildConfig } from '../build-info'
 import type { OutputOptions, RollupBuild } from 'rollup'
 import type { TaskFunction } from 'gulp'
 
+// rollup
 export const generateExternal = (options: { full: boolean }) => {
   const { dependencies, peerDependencies } =
     getPackageDependencies(ENTRY_PACKAGE_ROOT)
@@ -29,6 +30,10 @@ export const generateExternal = (options: { full: boolean }) => {
       (pkg) => id === pkg || id.startsWith(`${pkg}/`)
     )
   }
+}
+
+export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {
+  return Promise.all(options.map((option) => bundle.write(option)))
 }
 
 export function formatBundleFilename(
@@ -73,10 +78,6 @@ export const excludeFiles = (files: string[]) => {
     const position = path.startsWith(ROOT_DIR) ? ROOT_DIR.length : 0
     return !excludes.some((exclude) => path.includes(exclude, position))
   })
-}
-
-export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {
-  return Promise.all(options.map((option) => bundle.write(option)))
 }
 
 // process

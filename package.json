@@ -53,6 +53,7 @@
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
     "vue": "catalog:",
+    "vue-macros": "catalog:",
     "vue-tsc": "catalog:"
   },
   "config": {

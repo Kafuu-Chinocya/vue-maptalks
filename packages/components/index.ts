@@ -1,3 +1,3 @@
-import Test from './test.vue'
+import TestComp from './test-comp/test-comp.vue'
 
-export { Test }
+export { TestComp }

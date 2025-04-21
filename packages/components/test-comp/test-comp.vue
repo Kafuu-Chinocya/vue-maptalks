@@ -5,11 +5,9 @@
 <script lang="ts" setup>
 import { watch } from 'vue'
 
-const props = defineProps({
-  a: {
-    type: Number
-  }
-})
+import { testCompProps } from './test-comp'
+
+const props = defineProps(testCompProps())
 
 watch(
   () => props.a,
