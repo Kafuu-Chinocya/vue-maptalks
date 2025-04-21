@@ -8,6 +8,7 @@ import {
   ENTRY_PACKAGE,
   ENTRY_PACKAGE_ROOT,
   type Module,
+  PACKAGE_OUTPUT_DIR,
   ROOT_DIR,
   buildConfig,
   run,
@@ -17,15 +18,15 @@ import {
 
 export const copyFiles = () =>
   Promise.all([
-    copyFile(ENTRY_PACKAGE, path.join(ENTRY_PACKAGE_ROOT, 'package.json')),
+    copyFile(ENTRY_PACKAGE, path.join(PACKAGE_OUTPUT_DIR, 'package.json')),
     copyFile(
       path.resolve(ROOT_DIR, 'README.md'),
-      path.resolve(ENTRY_PACKAGE_ROOT, 'README.md')
-    ),
-    copyFile(
-      path.resolve(ROOT_DIR, 'typings', 'global.d.ts'),
-      path.resolve(ENTRY_PACKAGE_ROOT, 'global.d.ts')
+      path.resolve(PACKAGE_OUTPUT_DIR, 'README.md')
     )
+    /* copyFile(
+      path.resolve(ROOT_DIR, 'typings', 'global.d.ts'),
+      path.resolve(PACKAGE_OUTPUT_DIR, 'global.d.ts')
+    ) */
   ])
 
 export const copyTypesDefinitions: TaskFunction = (done) => {
@@ -45,7 +46,7 @@ export const copyFullStyle = async () => {
 export default series(
   withTaskName('clean', () => run('pnpm run clean')),
   withTaskName('createOutput', () =>
-    mkdir(ENTRY_PACKAGE_ROOT, { recursive: true })
+    mkdir(PACKAGE_OUTPUT_DIR, { recursive: true })
   ),
   withTaskName('buildComponents', runTask('buildComponents')),
 

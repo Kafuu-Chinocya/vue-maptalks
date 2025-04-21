@@ -7,7 +7,9 @@
     "types": ["vue-macros/macros-global"],
     "skipLibCheck": true,
     "isolatedModules": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false
   },
   "include": ["packages", "typings/env.d.ts"],
   "exclude": [

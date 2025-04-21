@@ -21,6 +21,6 @@ export const generateTypesDefinitions = async () => {
   })
   await Promise.all(rewriteTasks)
   const sourceDir = path.join(typesDir, PACKAGE_NAME)
-  await cp(sourceDir, typesDir)
+  await cp(sourceDir, typesDir, { recursive: true })
   await rm(sourceDir, { recursive: true })
 }

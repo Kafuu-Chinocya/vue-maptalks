@@ -1,12 +1,8 @@
 {
   "name": "@vue-maptalks/utils",
-  "version": "0.0.0",
+  "private": true,
   "main": "index.ts",
-  "module": "index.ts",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
   "peerDependencies": {
     "vue": "catalog:"
-  },
-  "types": "index.d.ts"
+  }
 }
