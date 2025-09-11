@@ -6,6 +6,7 @@ import jsoncParser from 'jsonc-eslint-parser'
 import eslintPluginJsonc from 'eslint-plugin-jsonc'
 import vueParser from 'vue-eslint-parser'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import importPlugin from 'eslint-plugin-import'
 
 export default tseslint.config(
@@ -14,6 +15,7 @@ export default tseslint.config(
   importPlugin.flatConfigs.recommended,
   ...pluginVue.configs['flat/recommended'],
   ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
+  eslintConfigPrettier,
 
   {
     languageOptions: {
