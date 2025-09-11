@@ -11,10 +11,10 @@ import importPlugin from 'eslint-plugin-import'
 
 export default tseslint.config(
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
+  tseslint.configs.recommended,
   importPlugin.flatConfigs.recommended,
-  ...pluginVue.configs['flat/recommended'],
-  ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
+  pluginVue.configs['flat/recommended'],
+  eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
   eslintConfigPrettier,
 
   {
@@ -143,21 +143,6 @@ export default tseslint.config(
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
       'import/named': 'off',
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            { name: 'lodash', message: 'Use lodash-unified instead.' },
-            { name: 'lodash-es', message: 'Use lodash-unified instead.' }
-          ],
-          patterns: [
-            {
-              group: ['lodash/*', 'lodash-es/*'],
-              message: 'Use lodash-unified instead.'
-            }
-          ]
-        }
-      ],
 
       // prettier
       'prettier/prettier': 'error'
